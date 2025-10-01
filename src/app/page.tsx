@@ -14,10 +14,9 @@ export default function ComingSoon() {
   });
 
   useEffect(() => {
-    // Set launch date (2 weeks from now) - calculate once
-    const launchDate = new Date();
-    launchDate.setDate(launchDate.getDate() + 14);
-    
+    // Set launch date to October 11, 2025
+    const launchDate = new Date('2025-10-11T00:00:00');
+
     const updateCountdown = () => {
       const now = new Date().getTime();
       const distance = launchDate.getTime() - now;
@@ -34,7 +33,7 @@ export default function ComingSoon() {
 
     // Update immediately
     updateCountdown();
-    
+
     // Then update every second
     const timer = setInterval(updateCountdown, 1000);
     return () => clearInterval(timer);
@@ -102,11 +101,11 @@ export default function ComingSoon() {
               className="space-y-6 sm:space-y-8 mb-12 sm:mb-16"
             >
               <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-black leading-[0.9]">
-                Something
+                A Home
                 <br />
-                <span className="font-normal">Sacred</span>
+                <span className="font-normal">for You,</span>
                 <br />
-                <span className="font-extralight italic">Is Coming</span>
+                <span className="font-extralight italic">Coming Soon</span>
               </h1>
               <div className="w-12 h-px bg-black mx-auto"></div>
               <p className="text-base sm:text-lg md:text-xl font-light text-gray-600 max-w-lg mx-auto leading-relaxed px-4 sm:px-0">
@@ -122,11 +121,12 @@ export default function ComingSoon() {
               transition={{ duration: 1.5, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="mb-12 sm:mb-16"
             >
-              <div className="flex justify-center items-center space-x-4 sm:space-x-8 md:space-x-12">
+              <div className="flex justify-center items-center space-x-4 sm:space-x-6 md:space-x-8">
                 {[
                   { label: "Days", value: timeLeft.days },
                   { label: "Hours", value: timeLeft.hours },
-                  { label: "Minutes", value: timeLeft.minutes }
+                  { label: "Minutes", value: timeLeft.minutes },
+                  { label: "Seconds", value: timeLeft.seconds }
                 ].map((item, index) => (
                   <motion.div
                     key={item.label}
